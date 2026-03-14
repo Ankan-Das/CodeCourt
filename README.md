@@ -32,38 +32,61 @@ cd packages/cli
 npm install
 ```
 
-## Architecture
+## How It Works
 
 ```
-                    ┌─────────────────┐
-                    │   Clerk         │  ← CLI / GitHub Action
-                    │   (Intake)      │
-                    └────────┬────────┘
-                             │
-                    ┌────────▼────────┐
-                    │   Bailiff       │  ← Security Scanner
-                    │   (Security)    │
-                    └────────┬────────┘
-                             │
-         ┌───────────────────┼───────────────────┐
-         ▼                   ▼                   ▼
-┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
-│    Defender     │ │   Prosecutor    │ │   Code Review   │
-│  (Advocates)    │ │  (Challenges)   │ │    (Analyzes)   │
-└────────┬────────┘ └────────┬────────┘ └────────┬────────┘
-         │                   │                   │
-         └───────────────────┼───────────────────┘
-                             ▼
-                    ┌─────────────────┐
-                    │     Judge       │  ← Final Verdict
-                    │   (Decides)     │
-                    └────────┬────────┘
-                             │
-                    ┌────────▼────────┐
-                    │   Auto-Fix      │  ← Generates Patches
-                    │   (Remediation) │
-                    └─────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                         YOUR PR                                  │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│  PHASE 1: Security Check                                        │
+│  ┌─────────────┐                                                │
+│  │  Security   │ → Scans for vulnerabilities, secrets           │
+│  │   Bailiff   │ → Flags critical issues                        │
+│  └─────────────┘                                                │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│  PHASE 2: The Debate                                            │
+│  ┌──────────┐    ┌────────────┐    ┌─────────┐                 │
+│  │ Defender │ ←→ │ Prosecutor │ ←→ │  Judge  │                 │
+│  └──────────┘    └────────────┘    └─────────┘                 │
+│       │                │                │                       │
+│  "Code is good    "But this has    "Verdict:                   │
+│   because..."      these issues"    approve/reject"            │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│  PHASE 3: Auto-Fix                                              │
+│  ┌─────────────┐                                                │
+│  │  Auto-Fix   │ → Takes issues from above                      │
+│  │   Agent     │ → Generates patches                            │
+│  └─────────────┘ → Validates & outputs                          │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│  OUTPUT                                                          │
+│  • PR Comment with verdict                                       │
+│  • Inline comments on specific lines                            │
+│  • Suggested fix patches                                        │
+│  • (Optional) Auto-commit fixes                                 │
+└─────────────────────────────────────────────────────────────────┘
 ```
+
+## The Agents
+
+| Agent | Role | What It Does |
+|-------|------|--------------|
+| **Security Bailiff** | First line of defense | Scans for secrets, OWASP vulnerabilities, dependency issues |
+| **Defender** | Advocates FOR the code | Presents arguments why the changes are good |
+| **Prosecutor** | Challenges the code | Finds bugs, style issues, potential problems |
+| **Judge** | Final decision maker | Weighs both sides, delivers verdict with reasoning |
+| **Auto-Fix** | Remediation | Generates actual code patches for identified issues |
 
 ## Development
 
