@@ -9,14 +9,16 @@ from codecourt.agents.models import (
     ReviewResult,
     Severity,
 )
+from codecourt.agents.security import SecurityAgent
 
 __all__ = [
     # Base
     "BaseAgent",
     "AgentMessage",
     "AgentResponse",
-    # Code Reviewer
+    # Agents
     "CodeReviewAgent",
+    "SecurityAgent",
     # Models
     "Finding",
     "ReviewResult",
