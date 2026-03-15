@@ -3,8 +3,21 @@
 
 import asyncio
 
+from codecourt.config import settings
 from codecourt.tools import parse_diff
 from codecourt.agents import CodeReviewAgent
+
+# Check for API key (loaded from .env)
+if not settings.openai_api_key:
+    print("❌ OPENAI_API_KEY not set!")
+    print()
+    print("Add your key to .env file:")
+    print("  OPENAI_API_KEY=sk-your-key-here")
+    print()
+    print("Get a key at: https://platform.openai.com/api-keys")
+    exit(1)
+
+print("✓ OPENAI_API_KEY loaded from .env")
 
 sample_diff = """diff --git a/src/auth.py b/src/auth.py
 --- a/src/auth.py

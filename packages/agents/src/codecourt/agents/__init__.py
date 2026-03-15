@@ -2,6 +2,7 @@
 
 from codecourt.agents.base import AgentMessage, AgentResponse, BaseAgent
 from codecourt.agents.code_reviewer import CodeReviewAgent
+from codecourt.agents.coordinator import CoordinatedReviewResult, Coordinator
 from codecourt.agents.models import (
     Approval,
     Category,
@@ -19,9 +20,11 @@ __all__ = [
     # Agents
     "CodeReviewAgent",
     "SecurityAgent",
+    "Coordinator",
     # Models
     "Finding",
     "ReviewResult",
+    "CoordinatedReviewResult",
     "Severity",
     "Category",
     "Approval",
