@@ -12,7 +12,7 @@ class Settings(BaseSettings):
         case_sensitive=False,
     )
 
-    # LLM Provider API Keys
+    # LLM Provider API Keys (loaded from .env file or environment)
     openai_api_key: str = ""
     anthropic_api_key: str = ""
     ollama_host: str = "http://localhost:11434"
