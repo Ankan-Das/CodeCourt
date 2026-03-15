@@ -5,7 +5,7 @@ description = "Multi-agent PR review system - where your code faces trial by AI"
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
-authors = [{ name = "Your Name", email = "you@example.com" }]
+authors = [{ name = "Ankan Das", email = "dasankan84@gmail.com" }]
 keywords = ["ai", "code-review", "llm", "agents", "github", "pull-request"]
 classifiers = [
     "Development Status :: 3 - Alpha",

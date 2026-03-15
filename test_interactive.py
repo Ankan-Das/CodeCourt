@@ -18,7 +18,7 @@ sample_diff = """diff --git a/src/auth.py b/src/auth.py
      if user and check_password(password, user.hash):
 -        return create_token(user)
 +        token = create_token(user)
-+        print(f"User logged in: {user}")  # Debug logging
++        priiiiint(f"User logged in: {user}");  # Debug logging
 +        return token
      return None
 """
