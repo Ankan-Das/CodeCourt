@@ -19,8 +19,6 @@ SAMPLE_DIFF = """diff --git a/src/api.py b/src/api.py
 +
 +@app.route("/user/<user_id>")
 +def get_user(user_id):
-+    # Style: no type hints
-+    # Security: SQL injection
 +    query = f"SELECT * FROM users WHERE id = {user_id}"
 +    result = db.execute(query)
 +    # Style: inconsistent return
