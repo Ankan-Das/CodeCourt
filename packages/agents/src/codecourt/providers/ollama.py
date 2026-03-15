@@ -66,7 +66,8 @@ class OllamaProvider(BaseLLMProvider):
     async def list_models(self) -> list[str]:
         """List available local models."""
         response = await self._client.list()
-        return [model["name"] for model in response["models"]]
+        # Ollama returns typed objects, not dicts
+        return [model.model for model in response.models]
 
     async def is_available(self) -> bool:
         """Check if Ollama is running."""
