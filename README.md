@@ -16,9 +16,21 @@ A multi-agent system for automated pull request reviews with auto-fix capabiliti
 
 ## Project Status
 
-🚧 **Under Development**
+🟢 **Phase 2 Complete** — Core review pipeline is working!
 
-See [docs/PROGRESS.md](docs/PROGRESS.md) for current status.
+### What's Working
+- ✅ LLM Providers (OpenAI, Anthropic, Ollama)
+- ✅ Git diff parsing and file tools
+- ✅ Code Review Agent
+- ✅ Security Agent (OWASP, secrets detection)
+- ✅ Coordinator (parallel execution, deduplication, consensus)
+
+### Coming Next
+- ⏳ CLI interface
+- ⏳ Debate system (Defender/Prosecutor/Judge)
+- ⏳ Auto-Fix agent
+
+See [docs/PROGRESS.md](docs/PROGRESS.md) for detailed status.
 
 ## Quick Start
 

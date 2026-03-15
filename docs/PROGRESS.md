@@ -2,37 +2,80 @@
 
 ## Current Status
 
-**Phase:** 1 - Foundation  
-**Checkpoint:** 1.1 - Project Setup  
-**Last Updated:** 2026-03-14
+**Phase:** 2 - Multi-Agent Core (Complete)  
+**Next Up:** Phase 3 - Advanced Features (CLI, Debate System)  
+**Last Updated:** 2026-03-15
 
 ---
 
-## Phase 1: Foundation
+## Phase 1: Foundation ✅
 
 ### 1.1 Project Setup
 - [x] Initialize monorepo structure
-- [ ] Set up Python package with pyproject.toml
+- [x] Set up Python package with pyproject.toml
 - [ ] Set up TypeScript package with package.json
 - [x] Create docs/ROADMAP.md, PROGRESS.md, devlog/
 
 ### 1.2 LLM Provider Abstraction
-- [ ] Create base provider interface (`providers/base.py`)
-- [ ] Implement OpenAI provider
-- [ ] Implement Anthropic provider
-- [ ] Implement Ollama provider
-- [ ] Add provider factory with config
+- [x] Create base provider interface (`providers/base.py`)
+- [x] Implement OpenAI provider
+- [x] Implement Anthropic provider
+- [x] Implement Ollama provider
+- [x] Add provider factory with config
 
 ### 1.3 Git/Diff Tools
-- [ ] Parse git diff output
-- [ ] Extract changed files and hunks
-- [ ] Read file contents with context
-- [ ] Create patch objects
+- [x] Parse git diff output
+- [x] Extract changed files and hunks
+- [x] Read file contents with context
+- [x] Create patch/diff models
 
 ### 1.4 Basic Code Review Agent
-- [ ] Single agent that reviews a diff
-- [ ] Returns structured feedback (file, line, severity, message)
-- [ ] Test on sample PRs
+- [x] Single agent that reviews a diff (`code_reviewer.py`)
+- [x] Returns structured feedback (file, line, severity, message)
+- [x] Test on sample PRs
+
+---
+
+## Phase 2: Multi-Agent Core ✅
+
+### 2.1 Coordinator Agent
+- [x] Orchestrates multiple specialist agents
+- [x] Parallel execution of agents
+- [x] Aggregates and deduplicates findings
+- [x] Prioritizes issues by severity
+- [x] Consensus-based approval decision
+
+### 2.2 Security Agent
+- [x] OWASP vulnerability detection
+- [x] Secrets/credential scanning
+- [x] Security-specific prompts and rules
+- [ ] Dependency vulnerability awareness (future)
+
+### 2.3 Agent Communication
+- [x] Define message format between agents (Finding, ReviewResult models)
+- [x] Implement handoff protocol via Coordinator
+- [x] Structured logging for debugging
+
+---
+
+## Phase 3: Advanced Features (In Progress)
+
+### 3.1 CLI
+- [ ] Create `cli.py` module
+- [ ] `codecourt review <diff-file>` command
+- [ ] `codecourt review --repo <path>` for local repos
+- [ ] Config file support
+
+### 3.2 Debate System
+- [ ] Defender agent: argues FOR the code changes
+- [ ] Prosecutor agent: argues AGAINST / finds problems
+- [ ] Judge agent: synthesizes and makes final call
+- [ ] Structured debate rounds
+
+### 3.3 Auto-Fix Agent
+- [ ] Generate fix suggestions as patches
+- [ ] Validate patches apply cleanly
+- [ ] Output unified diff format
 
 ---
 
@@ -44,6 +87,7 @@ _None currently_
 
 ## Next Session: Start Here
 
-> **Continue with:** Checkpoint 1.1 - Project Setup
+> **Continue with:** Phase 3.1 - CLI
 > 
-> Set up Python package (pyproject.toml) and TypeScript package (package.json)
+> Build the CLI module (`cli.py`) to make CodeCourt usable from the command line.
+> The entrypoint is already defined in pyproject.toml as `codecourt = "codecourt.cli:main"`

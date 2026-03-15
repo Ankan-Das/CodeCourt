@@ -6,69 +6,77 @@ Multi-agent PR review system with auto-fix, security scanning, and debate featur
 
 ---
 
-## Phase 1: Foundation
+## Phase 1: Foundation ✅
 
 ### 1.1 Project Setup
-- [ ] Initialize monorepo structure
-- [ ] Set up Python package with pyproject.toml
+- [x] Initialize monorepo structure
+- [x] Set up Python package with pyproject.toml
 - [ ] Set up TypeScript package with package.json
-- [ ] Create docs/ROADMAP.md, PROGRESS.md, devlog/
+- [x] Create docs/ROADMAP.md, PROGRESS.md, devlog/
 
 ### 1.2 LLM Provider Abstraction
-- [ ] Create base provider interface (`providers/base.py`)
-- [ ] Implement OpenAI provider
-- [ ] Implement Anthropic provider
-- [ ] Implement Ollama provider
-- [ ] Add provider factory with config
+- [x] Create base provider interface (`providers/base.py`)
+- [x] Implement OpenAI provider
+- [x] Implement Anthropic provider
+- [x] Implement Ollama provider
+- [x] Add provider factory with config
 
 ### 1.3 Git/Diff Tools
-- [ ] Parse git diff output
-- [ ] Extract changed files and hunks
-- [ ] Read file contents with context
-- [ ] Create patch objects
+- [x] Parse git diff output
+- [x] Extract changed files and hunks
+- [x] Read file contents with context
+- [x] Create patch objects
 
 ### 1.4 Basic Code Review Agent
-- [ ] Single agent that reviews a diff
-- [ ] Returns structured feedback (file, line, severity, message)
-- [ ] Test on sample PRs
+- [x] Single agent that reviews a diff
+- [x] Returns structured feedback (file, line, severity, message)
+- [x] Test on sample PRs
 
 ---
 
-## Phase 2: Multi-Agent Core
+## Phase 2: Multi-Agent Core ✅
 
 ### 2.1 Coordinator Agent
-- [ ] Orchestrates multiple specialist agents
-- [ ] Aggregates and deduplicates findings
-- [ ] Prioritizes issues by severity
+- [x] Orchestrates multiple specialist agents
+- [x] Parallel execution support
+- [x] Aggregates and deduplicates findings
+- [x] Prioritizes issues by severity
+- [x] Consensus-based approval decision
 
 ### 2.2 Security Agent
-- [ ] OWASP vulnerability detection
-- [ ] Secrets/credential scanning
+- [x] OWASP vulnerability detection
+- [x] Secrets/credential scanning
 - [ ] Dependency vulnerability awareness
-- [ ] Security-specific prompts and rules
+- [x] Security-specific prompts and rules
 
 ### 2.3 Agent Communication
-- [ ] Define message format between agents
-- [ ] Implement handoff protocol
-- [ ] Add logging for debugging agent interactions
+- [x] Define message format between agents (models.py)
+- [x] Implement handoff protocol via Coordinator
+- [x] Add logging for debugging agent interactions
 
 ---
 
-## Phase 3: Advanced Features
+## Phase 3: Advanced Features (Current)
 
-### 3.1 Debate System
-- [ ] Advocate agent: argues FOR the code changes
-- [ ] Critic agent: argues AGAINST / finds problems
+### 3.1 CLI
+- [ ] Create `cli.py` with Click/Typer
+- [ ] `codecourt review <diff-file>` command
+- [ ] `codecourt review --repo <path>` for local repos
+- [ ] Config file support (.codecourtrc)
+
+### 3.2 Debate System
+- [ ] Defender agent: argues FOR the code changes
+- [ ] Prosecutor agent: argues AGAINST / finds problems
 - [ ] Judge agent: synthesizes and makes final call
 - [ ] Structured debate rounds (2-3 exchanges)
 
-### 3.2 Auto-Fix Agent
+### 3.3 Auto-Fix Agent
 - [ ] Generate fix suggestions as patches
 - [ ] Validate patches apply cleanly
 - [ ] Run basic syntax checks on fixes
 - [ ] Output unified diff format
 
-### 3.3 Review Report Generator
+### 3.4 Review Report Generator
 - [ ] Aggregate all agent outputs
 - [ ] Generate markdown summary
 - [ ] Include confidence scores
