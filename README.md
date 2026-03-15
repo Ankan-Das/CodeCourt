@@ -24,24 +24,33 @@ A multi-agent system for automated pull request reviews with auto-fix capabiliti
 - ✅ Code Review Agent
 - ✅ Security Agent (OWASP, secrets detection)
 - ✅ Coordinator (parallel execution, deduplication, consensus)
+- ✅ CLI (`codecourt review`, `codecourt providers`, `codecourt parse`)
 
 ### Coming Next
-- ⏳ CLI interface
 - ⏳ Debate system (Defender/Prosecutor/Judge)
 - ⏳ Auto-Fix agent
+- ⏳ GitHub Action
 
 See [docs/PROGRESS.md](docs/PROGRESS.md) for detailed status.
 
 ## Quick Start
 
 ```bash
-# Install Python dependencies
+# Install
 cd packages/agents
 pip install -e .
 
-# Install CLI dependencies
-cd packages/cli
-npm install
+# Review a diff file
+codecourt review changes.diff
+
+# Review from git diff
+git diff | codecourt review --stdin
+
+# Review uncommitted changes
+codecourt review --repo .
+
+# Use a specific provider
+codecourt review --provider ollama --repo .
 ```
 
 ## How It Works

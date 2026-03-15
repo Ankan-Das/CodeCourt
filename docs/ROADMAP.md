@@ -58,10 +58,15 @@ Multi-agent PR review system with auto-fix, security scanning, and debate featur
 
 ## Phase 3: Advanced Features (Current)
 
-### 3.1 CLI
-- [ ] Create `cli.py` with Click/Typer
-- [ ] `codecourt review <diff-file>` command
-- [ ] `codecourt review --repo <path>` for local repos
+### 3.1 CLI ✅
+- [x] Create `cli.py` with Click
+- [x] `codecourt review <diff-file>` command
+- [x] `codecourt review --stdin` for piped input
+- [x] `codecourt review --repo <path>` for local repos
+- [x] Provider/model selection (`--provider`, `--model`)
+- [x] Output formats (`--format rich|json|markdown`)
+- [x] `codecourt providers` command
+- [x] `codecourt parse` command
 - [ ] Config file support (.codecourtrc)
 
 ### 3.2 Debate System

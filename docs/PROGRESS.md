@@ -2,8 +2,8 @@
 
 ## Current Status
 
-**Phase:** 2 - Multi-Agent Core (Complete)  
-**Next Up:** Phase 3 - Advanced Features (CLI, Debate System)  
+**Phase:** 3 - Advanced Features (In Progress)  
+**Next Up:** Debate System (Defender/Prosecutor/Judge)  
 **Last Updated:** 2026-03-15
 
 ---
@@ -60,11 +60,16 @@
 
 ## Phase 3: Advanced Features (In Progress)
 
-### 3.1 CLI
-- [ ] Create `cli.py` module
-- [ ] `codecourt review <diff-file>` command
-- [ ] `codecourt review --repo <path>` for local repos
-- [ ] Config file support
+### 3.1 CLI ✅
+- [x] Create `cli.py` module
+- [x] `codecourt review <diff-file>` command
+- [x] `codecourt review --stdin` for piped input
+- [x] `codecourt review --repo <path>` for local repos
+- [x] Provider/model selection flags
+- [x] Multiple output formats (rich, json, markdown)
+- [x] `codecourt providers` command
+- [x] `codecourt parse` command (debugging)
+- [ ] Config file support (.codecourtrc)
 
 ### 3.2 Debate System
 - [ ] Defender agent: argues FOR the code changes
@@ -87,7 +92,10 @@ _None currently_
 
 ## Next Session: Start Here
 
-> **Continue with:** Phase 3.1 - CLI
+> **Continue with:** Phase 3.2 - Debate System
 > 
-> Build the CLI module (`cli.py`) to make CodeCourt usable from the command line.
-> The entrypoint is already defined in pyproject.toml as `codecourt = "codecourt.cli:main"`
+> Implement the debate-based review system:
+> - Defender agent: argues FOR the code changes
+> - Prosecutor agent: argues AGAINST / finds problems  
+> - Judge agent: synthesizes arguments, delivers verdict
+> - Structured debate rounds (2-3 exchanges)
